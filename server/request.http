@@ -1,0 +1,47 @@
+POST http://localhost:5000/auth/register
+Content-Type: application/json
+
+{
+    "username":"nghia",
+    "password":"123456789"
+}
+###
+POST http://localhost:5000/auth/login
+Content-Type: application/json
+
+{
+    "username":"nghia",
+    "password":"123456789"
+}
+###
+POSt http://localhost:5000/post/addPost
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWRkNDJhNWU0ZWU5MGQ3ZTE5MmQ0ODkiLCJpYXQiOjE2NDE4OTYxNTd9.QlDtO9vF4cWMDhKjoT1Y1T3E1S1bTmfN0-C_RmW2iW4
+
+{
+    "title":"test",
+    "description":"test",
+    "url":"google.com"
+}
+###
+GET http://localhost:5000/post/listPost
+
+
+###
+GET http://localhost:5000/post/getPost
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWRkNDJhNWU0ZWU5MGQ3ZTE5MmQ0ODkiLCJpYXQiOjE2NDE5NTE3MDR9.0HpjPW1RGM3SS_iYeaMqfWaOzCX_z9GjAoYgfiBxx2I
+
+###
+PUT http://localhost:5000/post/updatePost/61dd594c0331400260b7a0d3
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWRkNDJhNWU0ZWU5MGQ3ZTE5MmQ0ODkiLCJpYXQiOjE2NDE5NTE3MDR9.0HpjPW1RGM3SS_iYeaMqfWaOzCX_z9GjAoYgfiBxx2I
+
+{
+    "title":"test2",
+    "description":"test2",
+    "url":"google.com"
+}
+
+###
+DELETE  http://localhost:5000/post/deletePost/61dd594c0331400260b7a0d3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MWRkNDJhNWU0ZWU5MGQ3ZTE5MmQ0ODkiLCJpYXQiOjE2NDE5NTE3MDR9.0HpjPW1RGM3SS_iYeaMqfWaOzCX_z9GjAoYgfiBxx2I
