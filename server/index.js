@@ -4,12 +4,14 @@ require('dotenv').config()
 const morgan = require('morgan')
 const db = require('./configDB')
 const route = require('./routes')
+const cors= require('cors')
 const port = process.env.PORT || 5000
 //connect with database
 db.connect()
 
 app.use(morgan('combined'))
 app.use(express.json())
+app.use(cors())
 
 route(app)
 

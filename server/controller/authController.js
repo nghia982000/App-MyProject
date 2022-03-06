@@ -6,9 +6,9 @@ class AuthController {
     async register(req, res) {
         const { username, password } = req.body
         if (!username || !password) {
-            return res.status(400).json({ 
-                message: 'Missing username and/or password', 
-                success: false 
+            return res.status(400).json({
+                message: 'Missing username and/or password',
+                success: false
             })
         }
         try {
@@ -16,9 +16,9 @@ class AuthController {
             const user = await User.findOne({ username: username })
 
             if (user) {
-                return res.status(400).json({ 
-                    success: false, 
-                    message: 'Username already taken' 
+                return res.status(400).json({
+                    success: false,
+                    message: 'Username already taken'
                 })
             }
             //All good
@@ -30,16 +30,17 @@ class AuthController {
             await newUser.save()
             //Return token
             const accessToken = jwt.sign({ userId: newUser._id }, process.env.ACCESS_TOKEN_SECRET)
-            res.json({ 
-                success: true, 
-                message: 'User created successfully', 
-                accessToken })
+            res.json({
+                success: true,
+                message: 'User created successfully',
+                accessToken
+            })
 
         } catch (error) {
             console.log(error)
-            res.status(500).json({ 
-                success: false, 
-                message: 'Internal server error' 
+            res.status(500).json({
+                success: false,
+                message: 'Internal server error'
             })
         }
 
@@ -47,42 +48,54 @@ class AuthController {
     async login(req, res) {
         const { username, password } = req.body
         if (!username || !password) {
-            return res.status(400).json({ 
-                message: 'Missing username and/or password', 
-                success: false })
+            return res.status(400).json({
+                message: 'Missing username and/or password',
+                success: false
+            })
         }
         try {
             //check for existing user
             const user = await User.findOne({ username: username })
 
             if (!user) {
-                return res.status(400).json({ 
-                    success: false, 
-                    message: 'Incorrect username ' 
+                return res.status(400).json({
+                    success: false,
+                    message: 'Incorrect username '
                 })
             }
             //Username found
             const passwordValid = await argon2.verify(user.password, password)
             if (!passwordValid) {
-                return res.status(400).json({ 
-                    success: false, 
-                    message: 'Incorrect password' 
+                return res.status(400).json({
+                    success: false,
+                    message: 'Incorrect password'
                 })
             }
             //All good
             const accessToken = jwt.sign({ userId: user._id }, process.env.ACCESS_TOKEN_SECRET)
-            res.json({ 
-                success: true, 
-                message: 'User logged in successfully', 
-                accessToken 
+            res.json({
+                success: true,
+                message: 'User logged in successfully',
+                accessToken
             })
 
         } catch (error) {
             console.log(error)
-            res.status(500).json({ 
-                success: false, 
-                message: 'Internal server error' 
+            res.status(500).json({
+                success: false,
+                message: 'Internal server error'
             })
+        }
+    }
+    async checkLogin(req, res) {
+        try {
+            const user = await User.findById(req.userId).select('-password')
+            if (!user)
+                return res.status(400).json({ success: false, message: 'User not found' })
+            res.json({ success: true, user })
+        } catch (error) {
+            console.log(error)
+            res.status(500).json({ success: false, message: 'Internal server error' })
         }
     }
 }

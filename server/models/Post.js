@@ -11,6 +11,10 @@ const PostSchema = new Schema({
     },
     url: {
         type: String,
+    },
+    user: {
+        type:Schema.Types.ObjectId,
+        ref:'users'
     }
 })
 

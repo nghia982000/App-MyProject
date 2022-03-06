@@ -47,7 +47,8 @@ class PostController {
             const newPost = new Post({
                 title,
                 description,
-                url: url.startsWith('https://') ? url : `https://${url}`
+                url: url.startsWith('https://') ? url : `https://${url}`,
+                user:req.userId
             })
             await newPost.save()
             res.json({
