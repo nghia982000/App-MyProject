@@ -1,0 +1,34 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    .headerLogo{
+        font-size: 30px;
+        font-weight: bold;
+        color: rgb(62, 66, 64);
+        display: flex;
+        align-items: center;
+        p{
+            margin: 0;
+        }
+    }
+    .headerAccount{
+        display: flex;
+        font-size: 20px;
+        width: 200px;
+        justify-content: space-between;
+        align-items: center;
+        a{
+            color: #222222;
+        }
+        .headerAccountUser{
+            width: 30px;
+            height: 30px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+        }
+    }
+}

@@ -6,6 +6,7 @@ import Footer from '../Components/Footer'
 import { useDispatch, useSelector } from 'react-redux'
 import * as actions from '../Redux/Actions'
 import { authState$ } from '../Redux/Selectors'
+import './style.scss'
 const Layout = () => {
   const dispatch = useDispatch()
   const { authLoading, isAuthenticated, } = useSelector(authState$)
@@ -14,16 +15,18 @@ const Layout = () => {
     dispatch(actions.checkLogin.checkLoginRequest())
   }, [])
 
-  if(!isAuthenticated){
-    window.location.href='/login'
+  if (!isAuthenticated) {
+    window.location.href = '/login'
   }
   return (
     <>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
-      <Footer />
+      <div className="container">
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+        <Footer />
+      </div>
     </>
   )
 }

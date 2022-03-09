@@ -6,13 +6,15 @@ import Login from './Pages/Login'
 import Register from './Pages/Register'
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/login" element={<Login/>}></Route>
-        <Route path="/register" element={<Register/>}></Route>
-        <Route path="/*" element={<Layout/>}></Route>
-      </Routes>
-    </Router>
+    <div className="app">
+      <Router>
+        <Routes>
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="/register" element={<Register />}></Route>
+          <Route path="/*" element={<Layout />}></Route>
+        </Routes>
+      </Router>
+    </div>
   )
 }
 

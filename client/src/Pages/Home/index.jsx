@@ -10,8 +10,6 @@ const Home = () => {
   return (
     <>
       Home page
-      <Link to='/login'>login</Link>
-      <Link to='/register'>register</Link>
       <Button onClick={logOut}>LogOut</Button>
     </>
   )
