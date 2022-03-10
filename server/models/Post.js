@@ -9,7 +9,13 @@ const PostSchema = new Schema({
     description: {
         type: String,
     },
-    url: {
+    image: {
+        type: String,
+    },
+    urlDemo: {
+        type: String,
+    },
+    urlSource: {
         type: String,
     },
     user: {

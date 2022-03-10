@@ -36,7 +36,7 @@ class PostController {
     }
 
     async addPost(req, res) {
-        const { title, description, url } = req.body
+        const { title, description, urlDemo,image, urlSource} = req.body
         if (!title) {
             return res.status(400).json({
                 message: 'Title is required',
@@ -47,7 +47,9 @@ class PostController {
             const newPost = new Post({
                 title,
                 description,
-                url: url.startsWith('https://') ? url : `https://${url}`,
+                image,
+                urlDemo: urlDemo.startsWith('https://') ? urlDemo : `https://${urlDemo}`,
+                urlSource: urlSource.startsWith('https://') ? urlSource : `https://${urlSource}`,
                 user:req.userId
             })
             await newPost.save()
@@ -65,7 +67,7 @@ class PostController {
         }
     }
     async updatePost(req, res) {
-        const { title, description, url } = req.body
+        const { title, description, urlDemo,image, urlSource}= req.body
         if (!title) {
             return res.status(400).json({
                 message: 'Title is required',
@@ -76,7 +78,9 @@ class PostController {
             let updatePost = {
                 title,
                 description,
-                url: url.startsWith('https://') ? url : `https://${url}`
+                image,
+                urlDemo: urlDemo.startsWith('https://') ? urlDemo : `https://${urlDemo}`,
+                urlSource: urlDemo.startsWith('https://') ? urlDemo : `https://${urlDemo}`
             }
             const postUpdateCondition = {
                 _id: req.params.id,

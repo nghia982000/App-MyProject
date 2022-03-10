@@ -10,18 +10,20 @@ POST http://localhost:5000/auth/login
 Content-Type: application/json
 
 {
-    "username":"nghia1",
+    "username":"admin",
     "password":"123456789"
 }
 ###
 POSt http://localhost:5000/post/addPost
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjIxN2VkY2E0OGFlM2VmNjFjNzJiOWQiLCJpYXQiOjE2NDYzNjUzMTV9.rYOfP7JkTbGaHD6oMwByR2FG-1Pa2WhXIbUOky-NMt4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjI5YzZmMWEyYjNjZmQzYTNmY2U1ZmQiLCJpYXQiOjE2NDY5MDUwODZ9.5VevSbHBJJjqNTaOxKumkhjKKj7tcwCwJ5zBT_zZdDo
 
 {
-    "title":"title",
+    "title":"title4",
     "description":"description",
-    "url":"google.com"
+    "image":"image",
+    "urlDemo":"google.com",
+    "urlSource":"google.com"
 }
 ###
 GET http://localhost:5000/post/listPost
@@ -29,19 +31,21 @@ GET http://localhost:5000/post/listPost
 
 ###
 GET http://localhost:5000/post/getPost
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjIxN2VkY2E0OGFlM2VmNjFjNzJiOWQiLCJpYXQiOjE2NDYzNjUzMTV9.rYOfP7JkTbGaHD6oMwByR2FG-1Pa2WhXIbUOky-NMt4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjI5YzZmMWEyYjNjZmQzYTNmY2U1ZmQiLCJpYXQiOjE2NDY5MDUwODZ9.5VevSbHBJJjqNTaOxKumkhjKKj7tcwCwJ5zBT_zZdDo
 
 ###
-PUT http://localhost:5000/post/updatePost/61dd53b575f691f59c6d870a
+PUT http://localhost:5000/post/updatePost/6229c83b3373194860cc0c3b
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjIxN2VkY2E0OGFlM2VmNjFjNzJiOWQiLCJpYXQiOjE2NDYzNjUzMTV9.rYOfP7JkTbGaHD6oMwByR2FG-1Pa2WhXIbUOky-NMt4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjI5YzZmMWEyYjNjZmQzYTNmY2U1ZmQiLCJpYXQiOjE2NDY5MDUwODZ9.5VevSbHBJJjqNTaOxKumkhjKKj7tcwCwJ5zBT_zZdDo
 
 {
-    "title":"ab",
-    "description":"test",
-    "url":"google.com"
+    "title":"title 1",
+    "description":"description",
+    "image":"image",
+    "urlDemo":"google.com",
+    "urlSource":"google.com"
 }
 
 ###
-DELETE  http://localhost:5000/post/deletePost/62218aac93b566b3c1713d56
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjIxN2VkY2E0OGFlM2VmNjFjNzJiOWQiLCJpYXQiOjE2NDYzNjUzMTV9.rYOfP7JkTbGaHD6oMwByR2FG-1Pa2WhXIbUOky-NMt4
+DELETE  http://localhost:5000/post/deletePost/6229c83b3373194860cc0c3b
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MjI5YzZmMWEyYjNjZmQzYTNmY2U1ZmQiLCJpYXQiOjE2NDY5MDUwODZ9.5VevSbHBJJjqNTaOxKumkhjKKj7tcwCwJ5zBT_zZdDo

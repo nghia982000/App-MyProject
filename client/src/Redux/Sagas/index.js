@@ -1,10 +1,11 @@
 import { takeLatest, call, put } from 'redux-saga/effects'
 import * as actions from '../Actions'
-import * as api from '../../Api/login'
+import * as apiLogin from '../../Api/login'
+import * as apiPost from '../../Api/post'
 import setAuthToken from '../../Api/until'
 function* fetchLoginSaga(action) {
     try {
-        const response = yield call(api.fetchLogin, action.payload)
+        const response = yield call(apiLogin.fetchLogin, action.payload)
         // console.log(response)
         if (response.data.success) {
             sessionStorage.setItem('token',response.data.accessToken)
@@ -25,7 +26,7 @@ function* fetchLoginSaga(action) {
 }
 function* fetchRegisterSaga(action) {
     try {
-        const response = yield call(api.fetchRegister, action.payload)
+        const response = yield call(apiLogin.fetchRegister, action.payload)
         console.log(response)
         if (response.data.success) {
             window.location.href='/login'
@@ -50,7 +51,7 @@ function* fetchCheckLoginSaga(action) {
         setAuthToken(sessionStorage['token'])
     }
     try {
-        const response = yield call(api.fetchCheckLogin)
+        const response = yield call(apiLogin.fetchCheckLogin)
         // console.log(response)
         yield put(actions.checkLogin.checkLoginSuccess(response.data.user))
     } catch (err) {
@@ -60,10 +61,40 @@ function* fetchCheckLoginSaga(action) {
         yield put(actions.checkLogin.checkLoginFailure())
     }
 }
+function* fetchPostDataSaga(action) {
+    try {
+        const response = yield call(apiPost.fetchPostData)
+        console.log(response)
+        yield put(actions.postData.postDataSuccess(response.data.posts))
+    } catch (err) {
+        console.error(err.response)
+        yield put(actions.postData.postDataFailure())
+    }
+}
+function* fetchDeletePostSaga(action) {
+    try {
+        const response = yield call(apiPost.fetchDeletePost,action.payload)
+        console.log(response)
+    } catch (err) {
+        console.error(err.response)
+    }
+}
+function* fetchAddPostSaga(action) {
+    try {
+        const response = yield call(apiPost.fetchAddPost,action.payload)
+        console.log(response.data.post)
+        yield put(actions.addPost.addPostSuccess(response.data.post))
+    } catch (err) {
+        console.error(err.response)
+    }
+}
 function* mySaga() {
     yield takeLatest(actions.login.loginRequest, fetchLoginSaga)
     yield takeLatest(actions.register.registerRequest, fetchRegisterSaga)
     yield takeLatest(actions.checkLogin.checkLoginRequest, fetchCheckLoginSaga)
+    yield takeLatest(actions.postData.postDataRequest, fetchPostDataSaga)
+    yield takeLatest(actions.deletePost.deletePostRequest, fetchDeletePostSaga)
+    yield takeLatest(actions.addPost.addPostRequest, fetchAddPostSaga)
 }
 
 export default mySaga

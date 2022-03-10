@@ -1,0 +1,39 @@
+.item{
+    flex: 25%;
+    max-width: 25%;
+    padding: 10px;
+    .itemBoder{
+        border: 1px solid #222222;
+        .itemPicture{
+            position: relative;
+            .itemEdit{
+                position: absolute;
+                top:0px;
+                right: 0;
+                z-index: 10;
+                color: #ffff;
+                width: 50px;
+                display: flex;
+                justify-content: space-around;
+                font-size: 15px;
+            }
+            .itemImg{
+                padding-top: 50%;
+                background-position: top center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+        }
+        .itemDecription{
+    
+        }
+        .itemAction{
+            .actionDemo{
+    
+            }
+            .actionSource{
+    
+            }
+        }
+    }
+}
