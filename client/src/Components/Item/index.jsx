@@ -13,12 +13,16 @@ const Item = ({ description, image, title, urlDemo, urlSource, id}) => {
         }
         dispatch(actions.deletePost.deletePostRequest(id))
     }
+    const updatePost=(id)=>{
+        dispatch(actions.updatePost.getPostRequest(id))
+        dispatch(actions.showModal.isModalUpdate(true))
+    }
     return (
         <div className="item">
             <div className="itemBoder">
                 <div className="itemPicture">
                     <div className="itemEdit">
-                    <SettingOutlined />
+                    <SettingOutlined  onClick={()=>updatePost(id)}/>
                     <DeleteOutlined onClick={()=>deletePost(id)}/>
                     </div>
                     <div className="itemImg" style={{ backgroundImage: `url(${image})` }}></div>

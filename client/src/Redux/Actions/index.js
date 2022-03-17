@@ -29,3 +29,12 @@ export const addPost =createActions({
     addPostRequest:(payload) => payload,
     addPostSuccess:(payload) => payload
 })
+export const updatePost =createActions({
+    getPostRequest:(payload) => payload,
+    updatePostRequest:(payload) => payload,
+    updatePostSuccess:(payload) => payload,
+})
+export const showModal =createActions({
+    isModalCreate:(payload) => payload,
+    isModalUpdate:(payload) => payload
+})

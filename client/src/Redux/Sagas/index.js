@@ -88,6 +88,15 @@ function* fetchAddPostSaga(action) {
         console.error(err.response)
     }
 }
+function* fetchUpdatePostSaga(action) {
+    try {
+        const response = yield call(apiPost.fetchUpdatePost,action.payload)
+        console.log(response)
+        yield put(actions.updatePost.updatePostSuccess(response.data.post))
+    } catch (err) {
+        console.error(err.response)
+    }
+}
 function* mySaga() {
     yield takeLatest(actions.login.loginRequest, fetchLoginSaga)
     yield takeLatest(actions.register.registerRequest, fetchRegisterSaga)
@@ -95,6 +104,7 @@ function* mySaga() {
     yield takeLatest(actions.postData.postDataRequest, fetchPostDataSaga)
     yield takeLatest(actions.deletePost.deletePostRequest, fetchDeletePostSaga)
     yield takeLatest(actions.addPost.addPostRequest, fetchAddPostSaga)
+    yield takeLatest(actions.updatePost.updatePostRequest, fetchUpdatePostSaga)
 }
 
 export default mySaga

@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react'
+import React, { useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Button, Spin } from 'antd'
 import { useDispatch, useSelector } from 'react-redux'
@@ -11,6 +11,9 @@ const Home = () => {
   const dispatch = useDispatch()
   const { data } = useSelector(postState$)
   console.log(data)
+  const showModal = () => {
+    dispatch(actions.showModal.isModalCreate(true))
+  }
   const logOut = () => {
     sessionStorage.removeItem('token')
     window.location.href = '/login'
@@ -20,21 +23,24 @@ const Home = () => {
   }, [])
   return (
     <>
-      <Button onClick={logOut}>LogOut</Button>
-      <Modal/>
+      <Button type="primary" onClick={logOut}>LogOut</Button>
+      <Button type="primary" onClick={showModal}>
+        Create
+      </Button>
+      <Modal />
       <div className="product">
         <div className="listItem">
           {
-            data.map((item,index)=>{
+            data.map((item, index) => {
               return (
-                <Item 
-                key={index} 
-                description={item.description}
-                image={item.image}
-                title={item.title}
-                urlDemo={item.urlDemo}
-                urlSource={item.urlSource}
-                id={item._id}
+                <Item
+                  key={index}
+                  description={item.description}
+                  image={item.image}
+                  title={item.title}
+                  urlDemo={item.urlDemo}
+                  urlSource={item.urlSource}
+                  id={item._id}
                 />
               )
             })

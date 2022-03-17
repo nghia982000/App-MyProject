@@ -5,6 +5,11 @@ export const INIT_STATE={
         user:null,
     },
     post:{
-        data:[]
+        data:[],
+        postDetail:{}
+    },
+    modal:{
+        create:false,
+        update:false
     }
 }

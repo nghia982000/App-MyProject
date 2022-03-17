@@ -1,5 +1,5 @@
 import { INIT_STATE } from "../States"
-import {getType,postData,deletePost,addPost} from '../Actions'
+import {getType,postData,deletePost,addPost, updatePost,showModal} from '../Actions'
 
 export default function postReducers(state=INIT_STATE.post,action){
     switch (action.type){
@@ -24,6 +24,19 @@ export default function postReducers(state=INIT_STATE.post,action){
             return {
                 ...state,
                 data:null
+            }
+        case getType(updatePost.getPostRequest):
+            return {
+                ...state,
+                postDetail:state.data.find((item)=>(item._id === action.payload))
+            }
+        case getType(updatePost.updatePostSuccess):
+            const newPost = state.data.map(item=>(
+                item._id===action.payload._id ? action.payload : item
+            ))
+            return {
+                ...state,
+                data: newPost
             }
         default:
             return state

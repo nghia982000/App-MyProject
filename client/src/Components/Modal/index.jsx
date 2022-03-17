@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     Table,
     Popconfirm,
@@ -19,23 +19,50 @@ import {
 import './style.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import * as actions from '../../Redux/Actions'
+import { triggerFocus } from 'antd/lib/input/Input'
+import { modalState$,postState$ } from '../../Redux/Selectors'
 const { TextArea } = Input
 const ModalPost = () => {
     const dispatch = useDispatch()
     const [formModal] = Form.useForm()
-    const [isModalVisible, setIsModalVisible] = useState(false)
-    const showModal = () => {
-        setIsModalVisible(true)
-    }
-
+    const { create,update } = useSelector(modalState$)
+    const { postDetail } = useSelector(postState$)
+    console.log(create,update)
 
     const handleCancel = () => {
-        setIsModalVisible(false)
+        dispatch(actions.showModal.isModalCreate(false))
+        dispatch(actions.showModal.isModalUpdate(false))
     }
     const onFinish = (values) => {
-        dispatch(actions.addPost.addPostRequest(values))
+        if(create){
+            dispatch(actions.addPost.addPostRequest(values))
+        }
+        if(update){
+            const newPost={
+                _id:postDetail._id,
+                data:values
+            }
+            console.log(newPost)
+            dispatch(actions.updatePost.updatePostRequest(newPost))
+        }
         handleCancel()
     }
+    useEffect(()=>{
+        if(create){
+            console.log(1)
+            formModal.resetFields()
+        }
+        if(update){
+            console.log(2)
+            formModal.setFieldsValue({
+                title:postDetail.title,
+                description:postDetail.description,
+                image:postDetail.image,
+                urlDemo:postDetail.urlDemo,
+                urlSource:postDetail.urlSource
+            })
+        }
+    },[create,update])
     const getBase64 = file => {
         return new Promise(resolve => {
             let baseURL = ""
@@ -62,12 +89,10 @@ const ModalPost = () => {
     }
     return (
         <>
-            <Button type="primary" onClick={showModal}>
-                Create
-            </Button>
+            
             <Modal
                 title="Create"
-                visible={isModalVisible}
+                visible={create||update}
                 onCancel={handleCancel}
                 footer={
                     <Button type="primary" htmlType="submit" form="formModal">

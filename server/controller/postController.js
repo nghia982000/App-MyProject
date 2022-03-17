@@ -80,7 +80,7 @@ class PostController {
                 description,
                 image,
                 urlDemo: urlDemo.startsWith('https://') ? urlDemo : `https://${urlDemo}`,
-                urlSource: urlDemo.startsWith('https://') ? urlDemo : `https://${urlDemo}`
+                urlSource: urlSource.startsWith('https://') ? urlSource : `https://${urlSource}`
             }
             const postUpdateCondition = {
                 _id: req.params.id,
