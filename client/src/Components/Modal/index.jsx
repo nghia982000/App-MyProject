@@ -20,49 +20,49 @@ import './style.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import * as actions from '../../Redux/Actions'
 import { triggerFocus } from 'antd/lib/input/Input'
-import { modalState$,postState$ } from '../../Redux/Selectors'
+import { modalState$, postState$ } from '../../Redux/Selectors'
 const { TextArea } = Input
 const ModalPost = () => {
     const dispatch = useDispatch()
     const [formModal] = Form.useForm()
-    const { create,update } = useSelector(modalState$)
+    const { create, update } = useSelector(modalState$)
     const { postDetail } = useSelector(postState$)
-    console.log(create,update)
+    console.log(create, update)
 
     const handleCancel = () => {
         dispatch(actions.showModal.isModalCreate(false))
         dispatch(actions.showModal.isModalUpdate(false))
     }
     const onFinish = (values) => {
-        if(create){
+        if (create) {
             dispatch(actions.addPost.addPostRequest(values))
         }
-        if(update){
-            const newPost={
-                _id:postDetail._id,
-                data:values
+        if (update) {
+            const newPost = {
+                _id: postDetail._id,
+                data: values
             }
             console.log(newPost)
             dispatch(actions.updatePost.updatePostRequest(newPost))
         }
         handleCancel()
     }
-    useEffect(()=>{
-        if(create){
+    useEffect(() => {
+        if (create) {
             console.log(1)
             formModal.resetFields()
         }
-        if(update){
+        if (update) {
             console.log(2)
             formModal.setFieldsValue({
-                title:postDetail.title,
-                description:postDetail.description,
-                image:postDetail.image,
-                urlDemo:postDetail.urlDemo,
-                urlSource:postDetail.urlSource
+                title: postDetail.title,
+                description: postDetail.description,
+                image: postDetail.image,
+                urlDemo: postDetail.urlDemo,
+                urlSource: postDetail.urlSource
             })
         }
-    },[create,update])
+    }, [create, update])
     const getBase64 = file => {
         return new Promise(resolve => {
             let baseURL = ""
@@ -71,28 +71,46 @@ const ModalPost = () => {
             reader.onload = () => {
                 baseURL = reader.result
                 resolve(baseURL)
+                console.log(baseURL)
             }
         })
     }
     const handleFileInputChange = e => {
-        console.log(e.target.files[0])
+        console.log(e.target.files[0].size)
         getBase64(e.target.files[0])
-            .then(result => {
-                formModal.setFieldsValue({
-                    image: result
+                .then(result => {
+                    formModal.setFieldsValue({
+                        image: result
+                    })
                 })
-            })
-            .catch(err => {
-                console.log(err)
-            })
+                .catch(err => {
+                    console.log(err)
+                })
+        // if (e.target.files[0].size <= 60000) {
+        //     getBase64(e.target.files[0])
+        //         .then(result => {
+        //             formModal.setFieldsValue({
+        //                 image: result
+        //             })
+        //         })
+        //         .catch(err => {
+        //             console.log(err)
+        //         })
+        //     return
+        // }
+        // notification.open({
+        //     message: 'Tải ảnh thất bại',
+        //     description: 'Ảnh có kích thước lớn hơn 60kb',
+        //     icon: <CloseCircleOutlined style={{ color: "red" }} />,
+        // })
 
     }
     return (
         <>
-            
+
             <Modal
                 title="Create"
-                visible={create||update}
+                visible={create || update}
                 onCancel={handleCancel}
                 footer={
                     <Button type="primary" htmlType="submit" form="formModal">

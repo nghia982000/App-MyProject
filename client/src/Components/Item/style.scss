@@ -3,37 +3,86 @@
     max-width: 25%;
     padding: 10px;
     .itemBoder{
-        border: 1px solid #222222;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        border-radius: 5px;
+        position: relative;
+        
         .itemPicture{
             position: relative;
             .itemEdit{
                 position: absolute;
                 top:0px;
                 right: 0;
-                z-index: 10;
+                z-index: 2;
                 color: #ffff;
                 width: 50px;
                 display: flex;
                 justify-content: space-around;
                 font-size: 15px;
+                padding-top: 5px;
             }
             .itemImg{
                 padding-top: 50%;
                 background-position: top center;
                 background-repeat: no-repeat;
                 background-size: cover;
+                border-radius: 5px 5px 0 0;
             }
         }
-        .itemDecription{
-    
+        .itemTitle{
+            &:hover .itemDetail{
+                display: block;
+            }
+            .textTitle{
+                font-size: 20px;
+                font-weight: bold;
+                padding: 5px 0;
+                margin: 0;
+                margin-left: 5px;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 1;
+                overflow: hidden;
+            }
+            .itemDetail{
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background-color: rgb(177, 224, 65);
+                z-index: 3;
+                padding: 5px;
+                border-radius: 5px;
+                display: none;
+                .itemTitleDetail{
+                    .textTitleDetail{
+                        display: -webkit-box;
+                        -webkit-box-orient: vertical;
+                        -webkit-line-clamp: 2;
+                        overflow: hidden;
+                        font-weight: bold;
+                    }
+                }
         }
-        .itemAction{
-            .actionDemo{
+            .itemDecription{
     
             }
-            .actionSource{
-    
+            .itemAction{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .actionDemo,
+                .actionSource{
+                    width: 90px;
+                    text-align: center;
+                    background-color: rgb(80, 144, 226);
+                    border-radius: 5px;
+                    a{
+                        color: #ffff;
+                    }
+                }
             }
         }
+        
     }
 }

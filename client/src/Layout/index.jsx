@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import Home from '../Pages/Home'
+import User from '../Pages/User'
 import Header from '../Components/Header'
+import Slider from '../Components/Slider'
 import Footer from '../Components/Footer'
 import { useDispatch, useSelector } from 'react-redux'
 import * as actions from '../Redux/Actions'
@@ -21,9 +23,11 @@ const Layout = () => {
   return (
     <>
       <div className="container">
-        <Header />
+        <Header/>
+        <Slider/>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/user" element={<User />} />
         </Routes>
         <Footer />
       </div>

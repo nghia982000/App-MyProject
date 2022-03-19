@@ -1,8 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './style.scss'
-import { UserOutlined } from '@ant-design/icons'
+import { LoginOutlined, UserOutlined } from '@ant-design/icons'
 const Header = () => {
+  const logOut = () => {
+    sessionStorage.removeItem('token')
+    window.location.href = '/login'
+  }
   return (
     <>
       <div className="header">
@@ -10,14 +14,14 @@ const Header = () => {
           <p>MyProject</p>
         </div>
         <div className="headerAccount">
-          <Link to='/login'>Login</Link>
-          <Link to='/register'>Register</Link>
-          <div className="headerAccountUser">
-            <UserOutlined />
+          <Link to='/'>Home</Link>
+          <Link to='/user'>User</Link>
+          <div className="headerLogOut">
+            <LoginOutlined onClick={logOut} />
           </div>
         </div>
       </div>
-      <hr style={{margin: '0px'}}/>
+      <hr style={{ margin: '0px' }} />
     </>
   )
 }

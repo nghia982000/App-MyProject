@@ -5,23 +5,24 @@
     .headerLogo{
         font-size: 30px;
         font-weight: bold;
-        color: rgb(62, 66, 64);
+        color: rgb(96, 216, 49);
         display: flex;
         align-items: center;
         p{
             margin: 0;
         }
     }
+    
     .headerAccount{
         display: flex;
         font-size: 20px;
-        width: 200px;
+        width: 150px;
         justify-content: space-between;
         align-items: center;
         a{
             color: #222222;
         }
-        .headerAccountUser{
+        .headerLogOut{
             width: 30px;
             height: 30px;
             border-radius: 15px;

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Button, Spin } from 'antd'
+import { PlusOutlined } from '@ant-design/icons'
 import { useDispatch, useSelector } from 'react-redux'
 import * as actions from '../../Redux/Actions'
 import './style.scss'
@@ -14,18 +15,14 @@ const Home = () => {
   const showModal = () => {
     dispatch(actions.showModal.isModalCreate(true))
   }
-  const logOut = () => {
-    sessionStorage.removeItem('token')
-    window.location.href = '/login'
-  }
+
   useEffect(() => {
     dispatch(actions.postData.postDataRequest())
   }, [])
   return (
     <>
-      <Button type="primary" onClick={logOut}>LogOut</Button>
-      <Button type="primary" onClick={showModal}>
-        Create
+      <Button shape="circle"  className='createPost' type="primary" onClick={showModal}>
+        <PlusOutlined />
       </Button>
       <Modal />
       <div className="product">
