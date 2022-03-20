@@ -26,6 +26,9 @@ const Login = () => {
   }, [isAuthenticated])
   return (
     <>
+    <div className="account" style={{textAlign:'center',fontSize:'20px',color:'red'}}>
+      Username:admin; Password:123456789
+    </div>
       <div className="loginForm">
         <div className="loginTitle">
           Login

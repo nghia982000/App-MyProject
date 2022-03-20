@@ -21,7 +21,7 @@ const Home = () => {
   }, [])
   return (
     <>
-      <Button shape="circle"  className='createPost' type="primary" onClick={showModal}>
+      <Button shape="circle" className='createPost' type="primary" onClick={showModal}>
         <PlusOutlined />
       </Button>
       <Modal />
