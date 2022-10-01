@@ -1,0 +1,77 @@
+.contact{
+    background: #051418;
+    padding: 80px 0;
+    .contactContainer{
+        max-width: 1170px;
+        margin: 0 auto;
+        .contactTitle{
+            text-align: center;
+            font-size: 40px;
+            font-weight: 600;
+            color: #fff;
+            padding-bottom: 40px;
+        }
+        .contactContent{
+            .contactInfo{
+                display: flex;
+                flex-wrap: wrap;
+                .contactInfoItem{
+                    flex: 50%;
+                    max-width: 50%;
+                    color: #fff;
+                    display: flex;
+                    align-items: center;
+                    padding: 20px 0;
+                    svg{
+                        fill:#fff;
+                        margin-right: 12px;
+                    }
+                    span{
+                        font-size: 16px;
+                        a{
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media (min-width:768px) and (max-width: 1199.98px) {
+    .contact{
+        .contactContainer{
+            padding: 0 30px;
+            .contactTitle{
+    
+            }
+            .contactContent{
+                .contactInfo{
+                    .contactInfoItem{
+    
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+@media (max-width: 767.98px) {
+    .contact{
+        .contactContainer{
+            padding: 0 20px;
+            .contactTitle{
+    
+            }
+            .contactContent{
+                .contactInfo{
+                    .contactInfoItem{
+                        flex: 100%;
+                        max-width: 100%;
+                    }
+                }
+            }
+        }
+    }
+
+}

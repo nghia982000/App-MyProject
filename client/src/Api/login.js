@@ -1,6 +1,6 @@
 import axios from 'axios'
 import request from './until'
-const URL = 'http://localhost:5000'
+const URL = ' https://personal-project-nghia.herokuapp.com'
 
 // export const fetchLogin = (payload) => {
 //     return request(`${URL}/auth/login`, {

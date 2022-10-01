@@ -1,0 +1,100 @@
+.project {
+    padding: 80px 0;
+    border-bottom: 1px dashed #fff;
+    .reverse{
+        flex-flow: row-reverse;
+        .projectContent{
+            padding-left: 0;
+            padding-right: 25px;
+        }
+    }
+    .projectContainer {
+        display: flex;
+        .projectImage {
+            flex: 1;
+            padding-top: 25%;
+            background-position: top center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: 10px;
+        }
+        
+        .projectContent {
+            margin-top: -15px;
+            flex: 1;
+            display: flex;
+            flex-flow: column;
+            justify-content: space-between;
+            color: #fff;
+            padding-left: 25px;
+            .projectTitle {
+                font-size: 35px;
+                font-weight: 600;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 1;
+                overflow: hidden;
+            }
+
+            .projectDescription {
+                font-size: 20px;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 5;
+                overflow: hidden;
+            }
+
+            .projectAction {
+                .projectBtn {
+                    background-color:#efd871 ;
+                    text-align: center;
+                    border-radius: 5px;
+                    padding: 5px 0;
+                    margin: 5px 0;
+                    cursor: pointer;
+                    &:hover{
+                        background-color: #ccbc74;
+                    }
+                    a{
+                        color: #222222;
+                        font-size: 16px;
+                        font-weight: 600;
+                    }
+                }
+
+            }
+        }
+    }
+}
+@media (min-width:768px) and (max-width: 1199.98px) {
+    
+}
+@media (max-width: 767.98px) {
+    .project {
+        .projectContainer {
+            flex-flow: column;
+            .projectImage {
+                padding-top: 50%;
+            }
+            
+            .projectContent {
+                padding:20px 0 0 0;
+                .projectTitle {
+                }
+    
+                .projectDescription {
+                }
+    
+                .projectAction {
+                    display: flex;
+                    padding-top: 40px;
+                    .projectBtn {
+                        flex: 1;
+                        margin:0 5px;
+                    }
+    
+                }
+            }
+        }
+    }
+}

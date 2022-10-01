@@ -65,7 +65,8 @@ function* fetchPostDataSaga(action) {
     try {
         const response = yield call(apiPost.fetchPostData)
         console.log(response)
-        yield put(actions.postData.postDataSuccess(response.data.posts))
+        yield put(actions.postData.postDataSuccess(response.data.data))
+        // yield put(actions.postData.postDataSuccess(response.data.posts))
     } catch (err) {
         console.error(err.response)
         yield put(actions.postData.postDataFailure())
